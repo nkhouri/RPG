@@ -31,7 +31,7 @@ void Weapon::setLevel(int l)
 
 int Weapon::getLevel()
 {
-	return 0;
+	return level;
 }
 
 void Weapon::setDamage(int d)
@@ -41,5 +41,5 @@ void Weapon::setDamage(int d)
 
 int Weapon::getDamage()
 {
-	return 0;
+	return damage;
 }

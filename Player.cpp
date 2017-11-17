@@ -3,7 +3,10 @@
 
 Player::Player()
 {
-	level = 0;
+	level = 1;
+	name = "";
+	armor = Armor();
+	weapon = Weapon();
 }
 
 
