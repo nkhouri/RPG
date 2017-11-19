@@ -17,4 +17,3 @@ public:
 	void setArmorRating(int r);
 	int getArmorRating();
 };
-
