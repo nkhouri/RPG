@@ -1,6 +1,5 @@
 #include "Player.h"
 
-
 Player::Player()
 {
 	level = 1;
@@ -63,14 +62,36 @@ Weapon Player::getWeapon()
 
 void Player::insert(Armor a)
 {
+	Armor tmp;
+	armorInventory[aLength] = a;
+	for (int i = aLength; i > 0; i--) {
+		if (armorInventory[i].getName() <= armorInventory[i + 1].getName()) {
+			tmp = armorInventory[i + 1];
+			armorInventory[i + 1] = armorInventory[i];
+			armorInventory[i] = tmp;
+		}
+	}
+	aLength++;
 }
 
 void Player::insert(Weapon w)
 {
+	Weapon tmp;
+	weaponInventory[wLength] = w;
+	for (int i = wLength; i > 0; i--) {
+		if (weaponInventory[i].getName() <= weaponInventory[i + 1].getName()) {
+			tmp = weaponInventory[i + 1];
+			weaponInventory[i + 1] = weaponInventory[i];
+			weaponInventory[i] = tmp;
+		}
+	}
+	wLength++;
 }
 
 void Player::insert(Potion p)
 {
+	potionInventory[pLength] = p;
+	pLength++;
 }
 
 void Player::remove(Armor a)
