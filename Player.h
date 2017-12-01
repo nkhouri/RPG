@@ -4,14 +4,23 @@
 #include "Armor.h"
 #include "Weapon.h"
 #include "Backpack.h"
+
+const int MAX_ITEMS = 1000;
 class Player
 {
 private:
 	std::string name;
 	int level;
+	int health;
+	int gold;
 	Armor armor;
 	Weapon weapon;
-	Backpack backpack;
+
+	//make 3 arrays for the 3 different items
+	Armor armorInventory[MAX_ITEMS]; //sorted array
+	Weapon weaponInventory[MAX_ITEMS]; //sorted array
+	Potion potionInventory[MAX_ITEMS]; //sorted array
+	int aLength, wLength, pLength; //lengths for the arays
 public:
 	Player();
 	~Player();
@@ -19,17 +28,18 @@ public:
 	void setLevel(int l);
 	void setArmor(Armor a);
 	void setWeapon(Weapon w);
-	void setBackpack(Backpack b);
-	void addBackpack(Weapon w, int c, Backpack b);
-	void addBackpack(Armor a, int c, Backpack b);
-	void addBackpack(Potion p, int c, Backpack b);
-	int getWeaponCount(Backpack b);
-	int getArmorCount(Backpack b);
-	int getPotionCount(Backpack b);
 	int getLevel();
 	std::string getName();
 	Armor getArmor();
 	Weapon getWeapon();
-	Backpack getBackpack();
+
+	//define the functions for the 3 arrays
+	void insert(Armor);
+	void insert(Weapon);
+	void insert(Potion);
+	void remove(Armor);
+	void remove(Weapon);
+	void remove(Potion);
+
 };
 

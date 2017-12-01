@@ -7,6 +7,13 @@ Player::Player()
 	name = "";
 	armor = Armor();
 	weapon = Weapon();
+	health = 10;
+	gold = 0;
+
+	aLength = 0;
+	wLength = 0;
+	pLength = 0;
+	//the arrays are defined as empty
 }
 
 
@@ -29,31 +36,6 @@ void Player::setLevel(int l)
 	level = l;
 }
 
-void Player::addBackpack(Armor a, int c, Backpack b)
-{
-	b.setArmor(a, c);
-}
-
-void Player::addBackpack(Potion p, int c, Backpack b)
-{
-	b.setPotion(p, c);
-}
-
-int Player::getWeaponCount(Backpack b)
-{
-	return b.getWeaponCount();
-}
-
-int Player::getArmorCount(Backpack b)
-{
-	return b.getArmorCount();
-}
-
-int Player::getPotionCount(Backpack b)
-{
-	return b.getArmorCount();
-}
-
 int Player::getLevel()
 {
 	return level;
@@ -74,21 +56,31 @@ void Player::setWeapon(Weapon w)
 	weapon = w;
 }
 
-void Player::setBackpack(Backpack b)
-{
-}
-
-void Player::addBackpack(Weapon w, int c, Backpack b)
-{
-	b.setWeapon(w, c);
-}
-
 Weapon Player::getWeapon()
 {
 	return weapon;
 }
 
-Backpack Player::getBackpack()
+void Player::insert(Armor a)
 {
-	return backpack;
+}
+
+void Player::insert(Weapon w)
+{
+}
+
+void Player::insert(Potion p)
+{
+}
+
+void Player::remove(Armor a)
+{
+}
+
+void Player::remove(Weapon w)
+{
+}
+
+void Player::remove(Potion p)
+{
 }
