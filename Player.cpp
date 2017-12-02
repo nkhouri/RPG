@@ -94,14 +94,37 @@ void Player::insert(Potion p)
 	pLength++;
 }
 
-void Player::remove(Armor a)
+void Player::removeArmor(int c)
 {
+	Armor tmp;
+	armorInventory[c] = Armor();
+	for (int i = c; i > aLength; i++) {
+		tmp = armorInventory[c + 1];
+		armorInventory[c + 1] = armorInventory[c];
+		armorInventory[c] = tmp;
+	}
+	aLength--;
 }
 
-void Player::remove(Weapon w)
+void Player::removeWeapon (int c)
 {
+	Weapon tmp;
+	weaponInventory[c] = Weapon();
+	for (int i = c; i > aLength; i++) {
+		tmp = weaponInventory[c + 1];
+		weaponInventory[c + 1] = weaponInventory[c];
+		weaponInventory[c] = tmp;
+	}
+	wLength--;
 }
 
-void Player::remove(Potion p)
+void Player::removePotion(int c)
 {
+	Potion tmp;
+	potionInventory[c] = Potion();
+	tmp = potionInventory[pLength];
+	potionInventory[pLength] = potionInventory[c];
+	potionInventory[c] = tmp;
+
+	pLength--;
 }

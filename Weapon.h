@@ -16,5 +16,7 @@ public:
 	int getLevel();
 	void setDamage(int d);
 	int getDamage();
+	Weapon generateWeapon(int); // the int will be the player level
+
 };
 

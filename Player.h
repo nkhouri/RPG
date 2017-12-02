@@ -37,9 +37,9 @@ public:
 	void insert(Armor);
 	void insert(Weapon);
 	void insert(Potion);
-	void remove(Armor);
-	void remove(Weapon);
-	void remove(Potion);
+	void removeArmor(int);
+	void removeWeapon(int);
+	void removePotion(int);
 
 };
 
