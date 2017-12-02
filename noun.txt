@@ -1,0 +1,8 @@
+Sword
+Mace
+Cleaver
+Bow
+Claymore
+Flail
+Katana
+Diabo
