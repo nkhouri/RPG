@@ -16,4 +16,7 @@ public:
 	int getLevel();
 	void setArmorRating(int r);
 	int getArmorRating();
+
+	void generateArmor(int);
+	void printArmor();
 };

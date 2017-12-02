@@ -1,0 +1,8 @@
+Chestpiece
+Chainmail
+Plate
+Protector
+Bulwark
+Bastion
+Fortress
+Citadel

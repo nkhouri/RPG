@@ -13,4 +13,7 @@ public:
 	int getHealingPower();
 	Potion();
 	~Potion();
+
+	void generatePotion();
+	void printPotion();
 };

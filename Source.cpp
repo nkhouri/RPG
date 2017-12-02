@@ -8,7 +8,7 @@
 using namespace std;
 
 void goToWild(Player player);
-Weapon generateWeapon(int);
+//Weapon generateWeapon(int);
 string generateName();
 //void generateLoot(Player player);
 int nounCount = 0;
@@ -20,6 +20,22 @@ int main() {
 	ifstream reader;
 
 	//testing environment
+	int t = 7;
+	Weapon weapon1;
+	weapon1.generateWeapon(t);
+	weapon1.printWeapon();
+	cout << endl << endl;
+
+	Armor armor1;
+	armor1.generateArmor(t);
+	armor1.printArmor();
+	cout << endl << endl;
+
+	Potion potion1;
+	potion1.generatePotion();
+	potion1.printPotion();
+	system("pause");
+	return 0;
 	//END TEST ENVIRONMENT
 
 
@@ -75,58 +91,6 @@ void goToWild(Player player)
 	}
 }
 
-//Generate a new weapon
-Weapon generateWeapon(int c) //c is player level
-{
-	srand(time(NULL)); //set the new seed for the generation
-	
-	Weapon weapon;
-	string noun[100]; //hold a max of 100 nouns
-	string adjetive[100]; //hold a max of 100 adjetives
-	ifstream input;
-	input.open("noun.txt");
-	int nCount = 0;
-	while (!input.eof()) {
-		input >> noun[nCount];
-		nCount++;
-	}
-	input.close();
-	input.open("adjetive.txt");
-	int aCount = 0;
-	while (!input.eof()) {
-		input >> adjetive[aCount];
-		aCount++;
-	}
-	string nameNoun = noun[(rand() % nCount)];
-	string nameAdjetive = adjetive[(rand() % aCount)];
-	//store the name into the weapon
-	string name = nameAdjetive + " " + nameNoun;
-	weapon.setName(name);
-	//set the level based on the players level
-	if (c <= 5) {
-		weapon.setLevel(1);
-	}
-	else {
-		int level = (rand() % c) + 5;
-		weapon.setLevel(level);
-	}
-	//set the damage based on the players level
-	//added set multipliers to damage to have a better loot outcome based of player level;
-
-	int damage = (rand() % c) + 5;
-	if (c < 15) {
-		damage = damage * 1.2; //20% inclrease base
-	}
-	else if (c >= 15 && c < 30) {
-		damage = damage * 1.6; //60% increase at lvl 15
-	}
-	else {
-		damage = damage * 2; //100% increase at 30+
-	}
-	weapon.setDamage(damage);
-	return weapon;
-}
-
 //Manually generate damage
 int generateDamage(int c) {
 	srand(time(NULL)); //set the new seed for the generation
@@ -147,6 +111,8 @@ int generateDamage(int c) {
 
 //Manually generate a level
 int generateLevel(int c) {
+	srand(time(NULL)); //seeds the number generators
+
 	int level;
 	if (c <= 5) {
 		level = 1;

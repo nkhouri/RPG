@@ -16,5 +16,8 @@ public:
 	int getLevel();
 	void setDamage(int d);
 	int getDamage();
+
+	void generateWeapon(int);
+	void printWeapon();
 };
 
