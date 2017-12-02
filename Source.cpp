@@ -7,7 +7,7 @@
 using namespace std;
 
 void goToWild(Player player);
-void generateLoot(Player player);
+//void generateLoot(Player player);
 int nounCount = 0;
 int adjetiveCount = 0;
 string noun[1000];
@@ -92,6 +92,7 @@ void goToWild(Player player)
 //	Used to generate a random set of loot for the player to take
 //	Parameter: Player who is receiving the loot
 //***************************************
+/*
 void generateLoot(Player player)
 {
 	//have a maximum of 2 items of 1 type to loot at 1 time
@@ -149,3 +150,4 @@ void generateLoot(Player player)
 		player.addBackpack(genP, player.getPotionCount(player.getBackpack()), player.getBackpack());
 	}
 }
+*/
