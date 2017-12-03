@@ -7,6 +7,7 @@ private:
 	std::string name;
 	int level;
 	int armorRating;
+	int price;
 public:
 	Armor();
 	~Armor();
@@ -16,6 +17,8 @@ public:
 	int getLevel();
 	void setArmorRating(int r);
 	int getArmorRating();
+	void setPrice(int);
+	int getPrice();
 
 	void generateArmor(int);
 	void printArmor();

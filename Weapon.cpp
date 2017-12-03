@@ -9,6 +9,7 @@ Weapon::Weapon()
 	name = "Rusty Sword";
 	level = 1;
 	damage = 1;
+	price = 100;
 }
 
 
@@ -44,6 +45,16 @@ void Weapon::setDamage(int d)
 int Weapon::getDamage()
 {
 	return damage;
+}
+
+void Weapon::setPrice(int p)
+{
+	price = p;
+}
+
+int Weapon::getPrice()
+{
+	return price;
 }
 
 void Weapon::generateWeapon(int c) //c is player level
@@ -91,6 +102,16 @@ void Weapon::generateWeapon(int c) //c is player level
 		dmg = dmg * 2; //100% increase at 30+
 	}
 	damage = dmg;
+
+	//calculate price
+	int priceCalculator;
+	priceCalculator = damage * 100;
+	if (level > level + 4) {
+		priceCalculator = priceCalculator * 1.2; // slight increase for good rolls
+	}
+	else if (level > damage)
+		priceCalculator = priceCalculator - (priceCalculator * .2);
+	price = priceCalculator;
 }
 
 void Weapon::printWeapon()
@@ -98,4 +119,5 @@ void Weapon::printWeapon()
 	std::cout << name << std::endl;
 	std::cout << "Level: " << level << std::endl;
 	std::cout << "Damage: " << damage << std::endl;
+	std::cout << "Price: " << price << std::endl;
 }

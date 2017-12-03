@@ -3,6 +3,7 @@
 #include <ctime>
 #include <thread>
 #include <chrono>
+#include <cmath>
 
 Player::Player()
 {
@@ -31,7 +32,7 @@ void Player::setName(std::string n)
 
 std::string Player::getName()
 {
-	return std::string();
+	return name;
 }
 
 void Player::setLevel(int l)
@@ -198,4 +199,22 @@ void Player::generateLoot() {
 		std::cout << std::endl;
 	}
 	std::cout << std::endl;
+}
+
+void Player::generateExp()
+{
+	srand(time(NULL)); //new seed
+	nextExp = pow(1.35, level + 1) + 10;
+	int expGain = (rand() % 5) + 1;
+	expGain = expGain * 1.2; //small boost
+
+	if (expGain >= nextExp) {
+		level++;
+		exp = 0;
+		nextExp = pow(1.35, level + 1) + 10;
+		std::cout << "LEVEL UP!!!!/nCongradulations! You are now level " << level << std::endl;
+	}
+	else {
+		exp = expGain;
+	}
 }

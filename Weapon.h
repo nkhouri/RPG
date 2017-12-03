@@ -7,6 +7,7 @@ private:
 	std::string name;
 	int level;
 	int damage;
+	int price;
 public:
 	Weapon();
 	~Weapon();
@@ -16,6 +17,8 @@ public:
 	int getLevel();
 	void setDamage(int d);
 	int getDamage();
+	void setPrice(int);
+	int getPrice();
 
 	void generateWeapon(int);
 	void printWeapon();

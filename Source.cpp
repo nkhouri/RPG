@@ -9,7 +9,7 @@
 
 using namespace std;
 
-void goToWild(Player);
+void goToWild(Player&);
 //void generateLoot(Player);
 int nounCount = 0;
 int adjetiveCount = 0;
@@ -20,9 +20,10 @@ int main() {
 	ifstream reader;
 
 	//testing environment
-	system("pause");
 	player.setName("Nick");
 	player.setLevel(11);
+	cout << player.getName() << " at generated level " << player.getLevel() << endl;
+	system("pause");
 	player.generateLoot();
 	cout << "GENERATION 2\n";
 	player.generateLoot();
@@ -74,11 +75,13 @@ int main() {
 //	Used to determine if the player fights or gets a luck crate
 //	Parameter: Player who is traveling into the wild
 //***********************************
-void goToWild(Player player)
+void goToWild(Player &player)
 {
 	int chance = rand() % 100;
 	if (chance > 90) {
 		cout << "You wander around the land and find a chest full of loot!\n";
+		player.generateLoot();
+		player.generateExp();
 	}
 	else {
 		cout << "An Enemy is approaching...\n";

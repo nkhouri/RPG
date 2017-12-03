@@ -13,6 +13,8 @@ private:
 	int level;
 	int health;
 	int gold;
+	int exp;
+	int nextExp;
 	Armor armor;
 	Weapon weapon;
 
@@ -34,6 +36,7 @@ public:
 	Weapon getWeapon();
 
 	void generateLoot(); //bulk of the RNG
+	void generateExp(); //
 
 	void printArmorFromInventory(int); //int being the position of the item
 	void printWeaponFromInventory(int);
@@ -48,4 +51,3 @@ public:
 
 	void displayBackpack(); //shows the contents of your entire backpack in order of array occurrance
 };
-

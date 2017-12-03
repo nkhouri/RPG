@@ -9,6 +9,7 @@ Armor::Armor()
 	name = "Rusty Chestpiece";
 	level = 1;
 	armorRating = 1;
+	price = 100;
 }
 
 
@@ -44,6 +45,16 @@ void Armor::setArmorRating(int r)
 int Armor::getArmorRating()
 {
 	return armorRating;
+}
+
+void Armor::setPrice(int p)
+{
+	price = p;
+}
+
+int Armor::getPrice()
+{
+	return price;
 }
 
 void Armor::generateArmor(int c)
@@ -91,6 +102,15 @@ void Armor::generateArmor(int c)
 		armor = armor * 2.2; //100% increase at 30+
 	}
 	armorRating = armor;
+
+	//set the price 
+	int priceCalculator = armor * 100;
+	if (armor > level + 4) {
+		priceCalculator = priceCalculator * 1.2; // slight increase for good rolls
+	}
+	else if (level > armor)
+		priceCalculator = priceCalculator - (priceCalculator * .2);
+	price = priceCalculator;
 }
 
 void Armor::printArmor()
@@ -98,4 +118,5 @@ void Armor::printArmor()
 	std::cout << name << std::endl;
 	std::cout << "Level: " << level << std::endl;
 	std::cout << "Protection: " << armorRating << std::endl;
+	std::cout << "Price: " << price << std::endl;
 }
