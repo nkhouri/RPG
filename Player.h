@@ -33,6 +33,11 @@ public:
 	Armor getArmor();
 	Weapon getWeapon();
 
+	void generateLoot(); //bulk of the RNG
+
+	void printArmorFromInventory(int); //int being the position of the item
+	void printWeaponFromInventory(int);
+
 	//define the functions for the 3 arrays
 	void insert(Armor);
 	void insert(Weapon);
@@ -41,5 +46,6 @@ public:
 	void removeWeapon(int);
 	void removePotion(int);
 
+	void displayBackpack(); //shows the contents of your entire backpack in order of array occurrance
 };
 

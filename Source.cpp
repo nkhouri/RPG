@@ -2,15 +2,15 @@
 #include <string>
 #include <fstream>
 #include <ctime>
+#include <thread>
+#include <chrono>
 #include "Player.h"
 
 
 using namespace std;
 
-void goToWild(Player player);
-//Weapon generateWeapon(int);
-string generateName();
-//void generateLoot(Player player);
+void goToWild(Player);
+//void generateLoot(Player);
 int nounCount = 0;
 int adjetiveCount = 0;
 int main() {
@@ -20,20 +20,15 @@ int main() {
 	ifstream reader;
 
 	//testing environment
-	int t = 7;
-	Weapon weapon1;
-	weapon1.generateWeapon(t);
-	weapon1.printWeapon();
-	cout << endl << endl;
+	system("pause");
+	player.setName("Nick");
+	player.setLevel(11);
+	player.generateLoot();
+	cout << "GENERATION 2\n";
+	player.generateLoot();
 
-	Armor armor1;
-	armor1.generateArmor(t);
-	armor1.printArmor();
-	cout << endl << endl;
-
-	Potion potion1;
-	potion1.generatePotion();
-	potion1.printPotion();
+	cout << "Printing the backpack after 2 generations of loot\n";
+	player.displayBackpack();
 	system("pause");
 	return 0;
 	//END TEST ENVIRONMENT
@@ -91,64 +86,51 @@ void goToWild(Player player)
 	}
 }
 
-//Manually generate damage
-int generateDamage(int c) {
-	srand(time(NULL)); //set the new seed for the generation
+/*
+void generateLoot(Player p) {
+	srand(time(NULL)); //new seed
 
-	int damage = (rand() % c) + 5;
-	if (c < 15) {
-		damage = damage * 1.2; //20% inclrease base
+	cout << "Searching for weapons...\n";
+	//determine how many weapons will drop
+	std::this_thread::sleep_for(std::chrono::milliseconds(1500)); // sleep the program to updeat the time
+	int chance = (rand() % 2) + 1; //1 or 2
+	cout << "LOOTED WEAPON(s): \n";
+	for (int i = 0; i < chance; i++) {
+		Weapon weaponGeneration;
+		weaponGeneration.generateWeapon(p.getLevel());
+		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+		weaponGeneration.printWeapon();
+		p.insertWeapon(weaponGeneration);
+		cout << endl;
 	}
-	else if (c >= 15 && c < 30) {
-		damage = damage * 1.6; //60% increase at lvl 15
+	cout << endl;
+	cout << "Searching for armor...\n";
+	//determine how many armor will drop
+	std::this_thread::sleep_for(std::chrono::milliseconds(1500));
+	cout << "LOOTED ARMOR(s): \n";
+	chance = (rand() % 2) + 1; //1 or 2
+	for (int i = 0; i < chance; i++) {
+		Armor armorGeneration;
+		armorGeneration.generateArmor(p.getLevel());
+		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+		armorGeneration.printArmor();
+		p.insert(armorGeneration);
+		cout << endl;
 	}
-	else {
-		damage = damage * 2; //100% increase at 30+
-	}
+	cout << endl;
 
-	return damage;
+	//determine how many potions the player will recieve
+	cout << "Searching for potions...\n";
+	std::this_thread::sleep_for(std::chrono::milliseconds(1500));
+	cout << "LOOTED POTION(s): \n";
+	chance = (rand() % 4) + 1; //1 to 4
+	for (int i = 0; i < chance; i++) {
+		Potion potionGeneration;
+		potionGeneration.generatePotion();
+		potionGeneration.printPotion();
+		p.insert(potionGeneration);
+		cout << endl;
+	}
+	cout << endl;
 }
-
-//Manually generate a level
-int generateLevel(int c) {
-	srand(time(NULL)); //seeds the number generators
-
-	int level;
-	if (c <= 5) {
-		level = 1;
-	}
-	else {
-		level = (rand() % c) + 5;
-	}
-
-	return level;
-}
-
-//Manually generate a name
-string generateName() {
-	srand(time(NULL)); //seeds the number generators
-
-	string noun[100]; //hold a max of 100 nouns
-	string adjetive[100]; //hold a max of 100 adjetives
-	ifstream input;
-	input.open("noun.txt");
-	int nCount = 0;
-	while (!input.eof()) {
-		input >> noun[nCount];
-		nCount++;
-	}
-	input.close();
-	input.open("adjetive.txt");
-	int aCount = 0;
-	while (!input.eof()) {
-		input >> adjetive[aCount];
-		aCount++;
-	}
-	string nameNoun = noun[(rand() % nCount)];
-	string nameAdjetive = adjetive[(rand() % aCount)];
-	//store the name into the weapon
-	string name = nameAdjetive + " " + nameNoun;
-	cout << name << endl;
-
-	return name;
-}
+*/
